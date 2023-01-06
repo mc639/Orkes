@@ -5,6 +5,7 @@ import com.orkes.cell.factory.CellFactory;
 import com.orkes.cell.factory.ConstantCellFactory;
 import com.orkes.cell.factory.FormulaCellFactory;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class Spreadsheet {
     private final Map<Class<?>, CellFactory> cellFactories;
 
     public Spreadsheet(){
-        this.cells = new HashMap<>();
+        this.cells = Collections.synchronizedMap(new HashMap<>());
         this.cellFactories = new HashMap<>();
         registerCellFactory(Integer.class, new ConstantCellFactory());
         registerCellFactory(String.class, new FormulaCellFactory(cells));
@@ -39,7 +40,12 @@ public class Spreadsheet {
 
     public int getCellValue(String cellId) {
         // Get the cell
-        Cell cell = cells.get(cellId);
+        Cell cell;
+
+        synchronized (cells) {
+            cell = cells.get(cellId);
+        }
+
         if (cell == null) {
             throw new IllegalArgumentException("Invalid cell ID: " + cellId);
         }
