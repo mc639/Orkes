@@ -8,7 +8,7 @@ import com.orkes.cell.factory.FormulaCellFactory;
 import java.util.HashMap;
 import java.util.Map;
 
-class Spreadsheet {
+public class Spreadsheet {
     private final Map<String, Cell> cells;
     private final Map<Class<?>, CellFactory> cellFactories;
 
