@@ -63,6 +63,15 @@ The Spreadsheet class has the following dependencies:
 
 Java SE 8 or later
 
+## Assumptions
+
+1. The cell IDs are always in the form of a capital letter followed by a number (e.g., "A1", "B2", "C3").
+2. The formulas are always in the form of an equals sign followed by a series of cell references separated by + (e.g., "=A1+B2").
+3. The only supported operators are addition.
+4. The cell references in formulas are always valid and refer to cells that have already been set.
+5. The cell values are always of a supported type (integer or string).
+7. The Cell and CellFactory interfaces are correctly implemented by all custom cell types.
+
 ## Edge Cases
 
 There are several edge cases and other situations that you should consider when implementing the Spreadsheet class:
