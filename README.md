@@ -1,4 +1,4 @@
-#Spreadsheet Backend
+# Spreadsheet Backend
 
 The Spreadsheet class is a simple backend for a spreadsheet application. It supports the following operations:
 
@@ -20,7 +20,7 @@ int a4 = spreadsheet.getCellValue("A4"); // a4 == 54
 ```
 
 
-##Custom cell types
+## Custom cell types
 
 The Spreadsheet class can be extended to support custom cell types by implementing the Cell interface and registering a CellFactory for the custom cell type.
 
@@ -42,7 +42,7 @@ To register a CellFactory, use the registerCellFactory method of the Spreadsheet
 spreadsheet.registerCellFactory(MyCustomType.class, new MyCustomTypeCellFactory());
 ```
 
-##Configuration
+## Configuration
 
 The Spreadsheet class can be configured using a properties file. The properties file should specify the fully-qualified class names of the CellFactory implementations for each supported cell value type.
 
