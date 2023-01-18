@@ -17,6 +17,8 @@ public class Spreadsheet {
         this.cells = Collections.synchronizedMap(new HashMap<>());
         this.cellFactories = new HashMap<>();
         registerCellFactory(Integer.class, new ConstantCellFactory());
+        registerCellFactory(Float.class, new ConstantCellFactory());
+        registerCellFactory(Double.class, new ConstantCellFactory());
         registerCellFactory(String.class, new FormulaCellFactory(cells));
     }
 
@@ -38,7 +40,7 @@ public class Spreadsheet {
         cells.put(cellId, cell);
     }
 
-    public int getCellValue(String cellId) {
+    public double getCellValue(String cellId) {
         // Get the cell
         Cell cell;
 

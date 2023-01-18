@@ -13,7 +13,7 @@ class SpreadsheetTest {
 
         // Test setting a cell value to a constant
         spreadsheet.setCellValue("A3", 15);
-        int value = spreadsheet.getCellValue("A3");
+        double value = spreadsheet.getCellValue("A3");
         assertEquals(15, value);
 
         spreadsheet.setCellValue("A1", 42);
@@ -21,9 +21,9 @@ class SpreadsheetTest {
         assertEquals(42, value);
 
         // Test setting a cell value to a formula
-        spreadsheet.setCellValue("A2", "=A1+A3");
+        spreadsheet.setCellValue("A2", "= ((A1+A3) / A3) > 34");
         value = spreadsheet.getCellValue("A2");
-        assertEquals(57, value);
+        assertEquals(0, value);
     }
 
 }
